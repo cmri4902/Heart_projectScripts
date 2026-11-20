@@ -1,0 +1,28 @@
+#### check LNPDB code location
+
+ls -lh "$ADAPTER"
+ls -lh "$REPO/model/pretrain/scripts/lipid_library/lnpdb_build.sbatch"
+ls -lh "$LNPDB_PREPARED"
+
+#### library generation 
+
+mkdir -p "$LNPDB_ROOT/logs"
+
+sbatch --export=ALL \
+  --array=0-15%4 \
+  --output="$LNPDB_ROOT/logs/HEART_LNPDB_%A_%a.out" \
+  --error="$LNPDB_ROOT/logs/HEART_LNPDB_%A_%a.err" \
+  "$REPO/model/pretrain/scripts/lipid_library/lnpdb_build.sbatch"
+
+### validation 
+
+"$PY" "$ADAPTER" finalize \
+  --out "$LNPDB_FULL_OUT" \
+  --prepared "$LNPDB_PREPARED" \
+  --num-shards 16
+
+"$PY" "$ADAPTER" verify \
+  --repo "$REPO" \
+  --dict "$GENERAL_DICT" \
+  --out "$LNPDB_FULL_OUT" \
+  --check-all

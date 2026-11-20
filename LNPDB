@@ -1,3 +1,14 @@
+####
+export REPO=/home/ypan/heart_liver/model_train/heart-molecular-pretraining
+export PY="$HOME/.conda/envs/heart_gpu/bin/python"
+export ADAPTER="$REPO/model/pretrain/lipid_library/lnpdb_to_heart.py"
+
+export GENERAL_DICT=/project/yli4/ypan/UniMolReference/ligand_data/ligands/dict.txt
+export LNPDB_ROOT=/project/yli4/ypan/lipid_library/lnpdb_heart
+export LNPDB_PREPARED="$LNPDB_ROOT/prepared/lnpdb_unique_prepared.csv"
+export LNPDB_FULL_OUT="$LNPDB_ROOT/lmdb_full"
+export NUM_SHARDS=16
+
 #### check LNPDB code location
 
 ls -lh "$ADAPTER"

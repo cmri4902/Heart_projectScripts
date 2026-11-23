@@ -1,0 +1,19 @@
+#### check pilot point to the right directory 
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining/model/pretrain/scripts
+bash -n submit_heart_pilot.sh continual_pilot_h200.sbatch
+
+## different submit 
+
+# Experiment A — Ugi only
+bash submit_heart_pilot.sh A smoke
+
+# Experiment B — Ugi + LNPDB
+bash submit_heart_pilot.sh B smoke
+
+# Submit both
+bash submit_heart_pilot.sh both smoke
+
+## acrtual training 5000 update
+
+bash submit_heart_pilot.sh both pilot

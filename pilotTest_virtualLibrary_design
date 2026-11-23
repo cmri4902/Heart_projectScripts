@@ -26,7 +26,7 @@ sacct -u "$USER" -S 2026-11-23 \
   --format=JobID,JobName%25,State,Elapsed,ExitCode
 
 ### check job status 
-JOBID=1015026
+JOBID=1015029
 
 scontrol show job "$JOBID"
 
@@ -35,7 +35,7 @@ sacct -j "$JOBID" \
 
 ### check error log 
 
-JOBID=1234567
+JOBID=1015029
 
 scontrol show job "$JOBID"
 

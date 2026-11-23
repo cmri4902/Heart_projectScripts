@@ -17,3 +17,33 @@ bash submit_heart_pilot.sh both smoke
 ## acrtual training 5000 update
 
 bash submit_heart_pilot.sh both pilot
+
+### smoke test failed 
+
+
+### check recent jobID 
+sacct -u "$USER" -S 2026-11-23 \
+  --format=JobID,JobName%25,State,Elapsed,ExitCode
+
+### check job status 
+JOBID=1015026
+
+scontrol show job "$JOBID"
+
+sacct -j "$JOBID" \
+  --format=JobID,State,Elapsed,ExitCode,MaxRSS
+
+### check error log 
+
+JOBID=1234567
+
+scontrol show job "$JOBID"
+
+sacct -j "$JOBID" \
+  --format=JobID,State,Elapsed,ExitCode,MaxRSS
+
+tail -n 100 /path/to/your/job.err
+
+tail -n 100 /path/to/your/job.out
+
+

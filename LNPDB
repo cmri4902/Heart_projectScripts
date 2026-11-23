@@ -37,3 +37,11 @@ sbatch --export=ALL \
   --dict "$GENERAL_DICT" \
   --out "$LNPDB_FULL_OUT" \
   --check-all
+
+
+####
+
+squeue -j 1014430
+sacct -j 1014430 -X --format=JobID,State,Elapsed,ExitCode
+
+squeue -u "$USER"

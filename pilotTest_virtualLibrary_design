@@ -187,6 +187,18 @@ sbatch \
 
 ### check pytorch with srun 
 
+srun \
+  --partition=gpu \
+  --nodelist=cmri-gpu05 \
+  --nodes=1 \
+  --ntasks=1 \
+  --cpus-per-task=4 \
+  --mem=16G \
+  --gres=gpu:h200:1 \
+  --time=00:15:00 \
+  --pty bash
+
+
 hostname
 nvidia-smi
 

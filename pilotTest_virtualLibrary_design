@@ -160,3 +160,20 @@ cat /project/yli4/ypan/heart_pilot_logs/cuda-${JOBID}.out
 cat /project/yli4/ypan/heart_pilot_logs/cuda-${JOBID}.err
 
 #
+
+
+find /project/yli4/ypan/runs/h200 \
+  -type f \( -name "*.out" -o -name "*.log" \) \
+  | head -30
+
+sacct -j OLD_JOB_ID \
+  --format=JobID,State,NodeList,Elapsed,ExitCode
+
+####
+
+sbatch \
+  --exclude=cmri-gpu04 \
+  --output=/project/yli4/ypan/heart_pilot_logs/cuda-other-%j.out \
+  --error=/project/yli4/ypan/heart_pilot_logs/cuda-other-%j.err \
+  check_h200_cuda.sbatch
+

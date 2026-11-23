@@ -62,4 +62,24 @@ grep -R -n "dominant slot profile" \
 grep -R -n "continual data preflight failed" \
   model/pretrain bin config
 
+####
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining
+
+python model/pretrain/tools/check_continual_data.py \
+  --general /project/yli4/ypan/UniMolReference/ligand_data/ligands \
+  --lipid-splits /project/yli4/ypan/lipid_library/lmdb/splits.json \
+  --lipid-shards 256 \
+  --min-dominant-fraction 0.85
+
+#### previous threshold 95 % 3d onfocal fail / update code reduce treshold to 85 % 
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining/model/pretrain/scripts
+
+bash -n continual_pilot_h200.sbatch
+
+grep -nE 'HEART_V2_ALLOW_DIRECT|min-dominant-fraction' continual_pilot_h200.sbatch
+
+bash submit_heart_pilot.sh A smoke
+
 

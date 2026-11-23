@@ -46,7 +46,7 @@ sacct -j 1014430 -X --format=JobID,State,Elapsed,ExitCode
 
 ####
 
-cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining/model/pretrain/scripts/lipid_library
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining/model/pretrain/lipid_library
 
 chmod +x HEART_LNPDB_finalize_verify.sh
 

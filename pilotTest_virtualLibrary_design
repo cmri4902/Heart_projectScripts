@@ -51,3 +51,15 @@ sed -i '/^#SBATCH --signal=/a export HEART_V2_ALLOW_DIRECT=1' continual_pilot_h2
 
 grep -n 'HEART_V2_ALLOW_DIRECT' continual_pilot_h200.sbatch
 bash -n continual_pilot_h200.sbatch
+
+####
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining
+
+grep -R -n "dominant slot profile" \
+  model/pretrain bin config
+
+grep -R -n "continual data preflight failed" \
+  model/pretrain bin config
+
+

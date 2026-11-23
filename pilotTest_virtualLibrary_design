@@ -113,3 +113,50 @@ except Exception as e:
     raise
 "
   '
+####
+
+cat > check_h200_cuda.sbatch <<'EOF'
+#!/bin/bash
+#SBATCH --job-name=HEART-CUDA-check
+#SBATCH --partition=gpu
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=8G
+#SBATCH --gres=gpu:h200:1
+#SBATCH --time=00:10:00
+#SBATCH --output=/project/yli4/ypan/heart_pilot_logs/cuda-%j.out
+#SBATCH --error=/project/yli4/ypan/heart_pilot_logs/cuda-%j.err
+
+set -euo pipefail
+
+echo "HOST=$(hostname)"
+echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
+
+nvidia-smi || true
+
+/home/ypan/.conda/envs/heart_gpu/bin/python - <<'PY'
+import torch
+
+print("PyTorch:", torch.__version__)
+print("CUDA build:", torch.version.cuda)
+print("CUDA available:", torch.cuda.is_available())
+
+torch.cuda.init()
+print("GPU:", torch.cuda.get_device_name(0))
+
+x = torch.ones(4, device="cuda")
+print("CUDA tensor:", x)
+PY
+EOF
+
+sbatch check_h200_cuda.sbatch
+
+squeue -u "$USER"
+
+JOBID=你的JobID
+
+cat /project/yli4/ypan/heart_pilot_logs/cuda-${JOBID}.out
+cat /project/yli4/ypan/heart_pilot_logs/cuda-${JOBID}.err
+
+#

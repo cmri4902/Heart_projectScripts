@@ -148,3 +148,16 @@ echo "=== H200 embeddings ==="
 find runs/evaluation -type f \
   \( -iname '*.png' -o -iname '*.npy' -o -iname '*.json' \) | head -30
 
+####
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining
+
+SRC=summary_figures/archived_general_pretraining/general_pretraining_figures_v3/general_pretraining_figures_v3
+DST=summary_figures/recovered_original_figures
+
+mkdir -p "$DST"
+cp -n "$SRC"/*.png "$DST"/
+
+echo "Recovered figures:"
+ls -lh "$DST"
+

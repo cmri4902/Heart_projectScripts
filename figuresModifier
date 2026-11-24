@@ -44,5 +44,29 @@ grep -RinE 'checkpoint_best|checkpoint_last|heart-h200-b448|checkpoint_path|mode
   "$EVAL/checkpoint_evaluation" \
   "$EVAL/chemistry_slide_evidence" \
   --include='*.json' --include='*.md' \
+
+
+####
+
+RUN=/project/yli4/ypan/runs/h200/full/heart-h200-b448-v1
+EVAL=/project/yli4/ypan/heart_evaluation/general_audit_10k_v2
+
+echo "===== H200 CHECKPOINTS ====="
+find "$RUN" -maxdepth 1 -type f -name 'checkpoint*.pt' \
+  -printf '%f %s bytes\n' | head -20
+
+echo "===== H200 LOGS ====="
+find "$RUN" "$EVAL/training_history" -maxdepth 2 -type f \
+  \( -name '*.log' -o -name '*.csv' -o -name '*.json' -o -name '*.png' \) \
+  2>/dev/null | sort | head -70
+
+echo "===== 10K EVALUATION PROVENANCE ====="
+grep -RinE 'checkpoint_best|checkpoint_last|heart-h200-b448|checkpoint_path|model_path' \
+  "$EVAL/checkpoint_evaluation" \
+  "$EVAL/chemistry_slide_evidence" \
+  --include='*.json' --include='*.md' \
+  2>/dev/null | head -35
+
+
   2>/dev/null | head -35
 

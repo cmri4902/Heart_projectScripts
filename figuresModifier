@@ -70,12 +70,6 @@ grep -RinE 'checkpoint_best|checkpoint_last|heart-h200-b448|checkpoint_path|mode
 
   2>/dev/null | head -35
 
-####
 
-cd /home/ypan/BindCraft2/BindCraft2_cd19_dev
-
-git status --short
-git remote -v
-git pull --ff-only origin main
 git log -1 --oneline
 

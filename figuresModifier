@@ -116,6 +116,14 @@ mkdir -p runs/evaluation
 
 cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining
 
+####
+
+# Figure v3 專用資料夾
+mkdir -p summary_figures/archived_general_pretraining
+
+# H200 embedding evaluation 專用資料夾
+mkdir -p runs/evaluation
+
 # 解壓縮 Figure v3
 mkdir -p summary_figures/archived_general_pretraining/general_pretraining_figures_v3
 

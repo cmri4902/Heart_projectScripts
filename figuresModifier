@@ -82,3 +82,21 @@ python cmri_model_raw_plotter.py
 python cmri_model_raw_plotter.py --inspect-only
 
 python cmri_model_raw_plotter.py
+
+
+##
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining
+
+mkdir -p summary_figures/archived_general_pretraining
+
+###
+
+cd summary_figures/archived_general_pretraining
+
+unzip general_pretraining_figures_v3.zip -d general_pretraining_figures_v3
+
+find general_pretraining_figures_v3 -type f \
+  \( -iname '*.png' -o -iname '*.svg' \) | sort
+
+

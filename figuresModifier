@@ -100,3 +100,43 @@ find general_pretraining_figures_v3 -type f \
   \( -iname '*.png' -o -iname '*.svg' \) | sort
 
 
+##
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining
+
+# Figure v3 專用資料夾
+mkdir -p summary_figures/archived_general_pretraining
+
+# H200 embedding evaluation 專用資料夾
+mkdir -p runs/evaluation
+
+
+
+####
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining
+
+# 解壓縮 Figure v3
+mkdir -p summary_figures/archived_general_pretraining/general_pretraining_figures_v3
+
+unzip -n \
+  summary_figures/archived_general_pretraining/general_pretraining_figures_v3.zip \
+  -d summary_figures/archived_general_pretraining/general_pretraining_figures_v3
+
+# 解壓縮 H200 evaluation
+unzip -n \
+  runs/evaluation/h200_best_embeddings.zip \
+  -d runs/evaluation
+
+###
+
+cd /home/ypan/heart_liver/model_train/heart-molecular-pretraining
+
+echo "=== Figure v3 ==="
+find summary_figures/archived_general_pretraining -type f \
+  \( -iname '*.png' -o -iname '*.svg' \) | head -20
+
+echo "=== H200 embeddings ==="
+find runs/evaluation -type f \
+  \( -iname '*.png' -o -iname '*.npy' -o -iname '*.json' \) | head -30
+

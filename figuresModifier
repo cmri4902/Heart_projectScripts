@@ -161,3 +161,61 @@ cp -n "$SRC"/*.png "$DST"/
 echo "Recovered figures:"
 ls -lh "$DST"
 
+####
+
+
+python - <<'PY'
+from pathlib import Path
+
+BASE = Path("/home/ypan/heart_liver/model_train")
+PROJECT = BASE / "heart-molecular-pretraining"
+VALIDATION = BASE / "validation"
+H200 = Path("/project/yli4/ypan/heart_evaluation/general_audit_10k_v2")
+
+paths = {
+    "Project root": PROJECT,
+    "Validation root": VALIDATION,
+
+    "H200 validation summary":
+        H200 / "checkpoint_evaluation/full_10k_batch8/evaluation_summary.json",
+
+    "H200 train summary":
+        H200 / "checkpoint_evaluation/train_10k_batch8/evaluation_summary.json",
+
+    "H200 geometry diagnostics":
+        H200 / "checkpoint_evaluation/full_10k_batch8/molecule_diagnostics.csv",
+
+    "H200 per-element":
+        H200 / "checkpoint_evaluation/full_10k_batch8/atom_token_class_accuracy.csv",
+
+    "Downstream benchmarks":
+        H200 / "chemistry_slide_evidence/independent_property_benchmarks/benchmark_all_runs.csv",
+
+    "Ugi full audit":
+        VALIDATION / "evidence/ugi/ugi_priority1_interactive_evidence/03_full_molecular_audit.json",
+
+    "Ugi 3D census":
+        VALIDATION / "evidence/ugi/ugi_priority1_interactive_evidence/02_3d_index_census.json",
+
+    "LNPDB overlap CSV":
+        VALIDATION / "evidence/lnpdb/ugi_lnpdb_priority2_evidence/lnpdb_unique_with_ugi_overlap.csv",
+
+    "LNPDB summary":
+        VALIDATION / "evidence/lnpdb/ugi_lnpdb_priority2_evidence/summary.json",
+
+    "Duplicate expanded evidence":
+        BASE / "heart_evaluation/duplicate_impact_expanded_evidence",
+
+    "Recovered original figures":
+        PROJECT / "summary_figures/recovered_original_figures",
+}
+
+for name, path in paths.items():
+    exists = path.exists()
+    print(f"{'FOUND  ' if exists else 'MISSING'} | {name}")
+    if not exists:
+        print(f"         {path}")
+
+print("\nPreflight complete. No files changed.")
+PY
+

@@ -11,3 +11,16 @@ find /project/yli4/ypan/heart_evaluation \
   2>/dev/null | head -70
 
   ## 
+
+ROOT=/project/yli4/ypan/heart_evaluation/general_audit_10k_v2
+
+echo "===== TRAINING HISTORY ====="
+find "$ROOT/training_history" -maxdepth 3 -type f | sort
+
+echo "===== CHECKPOINT EVALUATION ====="
+find "$ROOT/checkpoint_evaluation" -maxdepth 3 -type f \
+  \( -name "*.csv" -o -name "*.json" -o -name "*.npz" \) | sort
+
+echo "===== CHEMISTRY EVIDENCE ====="
+find "$ROOT/chemistry_slide_evidence" -maxdepth 4 -type f \
+  \( -name "*.csv" -o -name "*.json" -o -name "*.npz" \) | sort

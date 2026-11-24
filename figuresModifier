@@ -73,3 +73,10 @@ grep -RinE 'checkpoint_best|checkpoint_last|heart-h200-b448|checkpoint_path|mode
 
 git log -1 --oneline
 
+##
+
+python cmri_model_raw_plotter.py --inspect-only
+
+python cmri_model_raw_plotter.py
+
+

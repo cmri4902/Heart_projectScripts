@@ -1,0 +1,13 @@
+## find figures 
+
+echo "=== Evaluation directories ==="
+find /project/yli4/ypan -maxdepth 4 -type d \
+  \( -iname '*evaluat*' -o -iname '*audit*' -o -iname '*figure*' \) \
+  2>/dev/null | head -70
+
+echo "=== Figure files ==="
+find /project/yli4/ypan/heart_evaluation \
+  -type f \( -iname '*.png' -o -iname '*.svg' \) \
+  2>/dev/null | head -70
+
+  ## 

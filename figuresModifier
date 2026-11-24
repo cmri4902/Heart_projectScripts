@@ -79,4 +79,6 @@ python cmri_model_raw_plotter.py --inspect-only
 
 python cmri_model_raw_plotter.py
 
+python cmri_model_raw_plotter.py --inspect-only
 
+python cmri_model_raw_plotter.py

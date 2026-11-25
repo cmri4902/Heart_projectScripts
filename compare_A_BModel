@@ -86,5 +86,15 @@ find /project/yli4/ypan/lipid_library/lnpdb_heart/lmdb_full \
 
 find ~/heart_liver/model_train \
 /project/yli4/ypan/heart_evaluation \
+
+####
+
+cd /home/ypan/heart_liver/model_train
+
+du -sh heart-molecular-pretraining
+
+du -sh validation/notebooks
+
+
 -name 'chemistry_tests.py' 2>/dev/null
 

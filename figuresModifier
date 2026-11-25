@@ -219,3 +219,13 @@ for name, path in paths.items():
 print("\nPreflight complete. No files changed.")
 PY
 
+##
+
+
+UGI_TOP_IMAGE = UGI / 'figures' / 'HEART_P1_research_composite.png'
+
+CONFORMER_IMAGE = UGI / 'figures' / '06_real_LMDB_molecular_conformer.png'
+
+OVERLAP_IMAGE = LNP / 'figures' / '01_exact_overlap_groups.png'
+
+

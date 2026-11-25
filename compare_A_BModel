@@ -9,3 +9,38 @@ print("Verified updates:",
 print("Checkpoints:")
 for name, path in CHECKPOINTS.items():
     print(name, path, path.exists())
+
+
+####
+
+def save(fig, name):
+    from matplotlib.text import Text
+
+    fig.canvas.draw()
+
+    for t in fig.findobj(match=Text):
+        t.set_fontfamily(FONT)
+        t.set_fontsize(
+            15 if t is getattr(
+                fig, '_suptitle', None
+            ) else 12
+        )
+
+    f = OUT / f'{name}.svg'
+
+    fig.savefig(
+        f,
+        bbox_inches='tight',
+        facecolor='white'
+    )
+
+    content = f.read_text(encoding='utf-8')
+
+    f.write_text(
+        content.replace(FONT, 'Arial'),
+        encoding='utf-8'
+    )
+
+    plt.show()
+    plt.close(fig)
+

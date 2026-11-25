@@ -43,6 +43,7 @@ def save(fig, name):
     )
 
     plt.show()
+    plt.close(fig)
 
 ####
 
@@ -63,6 +64,27 @@ find /project/yli4/ypan/lipid_library/lnpdb_heart \
   -o -name '*.csv' \
   -o -name '*.tsv' \)
 
+####
 
-    plt.close(fig)
+cd ~/heart_liver/model_train
+
+grep -nEi 'valid|split|manifest|lnpdb|replay' \
+heart-molecular-pretraining/model/unimol/tasks/unimol_contrastive_pilot.py
+
+####
+
+grep -nEi 'valid|split|manifest|replay' \
+heart-molecular-pretraining-v2/model/unimol/tasks/unimol_contrastive_continual.py
+
+
+####
+
+find /project/yli4/ypan/lipid_library/lnpdb_heart/lmdb_full \
+-name 'valid.lmdb'
+
+####
+
+find ~/heart_liver/model_train \
+/project/yli4/ypan/heart_evaluation \
+-name 'chemistry_tests.py' 2>/dev/null
 

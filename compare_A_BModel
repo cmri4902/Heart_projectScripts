@@ -1,0 +1,11 @@
+
+#### add before section4 of CMRI_Model_AB_comparison
+print("Training settings reviewed:",
+      TRAIN_SETTINGS_REVIEWED)
+
+print("Verified updates:",
+      VERIFIED_UPDATES)
+
+print("Checkpoints:")
+for name, path in CHECKPOINTS.items():
+    print(name, path, path.exists())

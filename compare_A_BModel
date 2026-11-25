@@ -43,5 +43,26 @@ def save(fig, name):
     )
 
     plt.show()
+
+####
+
+cd ~/heart_liver/model_train
+
+find . -type f \
+  \( -iname '*lnpdb*.py' \
+  -o -iname '*lnpdb*.ipynb' \
+  -o -name 'unimol_contrastive_pilot.py' \
+  -o -name 'unimol_contrastive_continual.py' \
+  -o -name 'continual_pretrain_heart-h200.sh' \)
+
+####
+
+find /project/yli4/ypan/lipid_library/lnpdb_heart \
+  -type f \
+  \( -name '*.json' \
+  -o -name '*.csv' \
+  -o -name '*.tsv' \)
+
+
     plt.close(fig)
 

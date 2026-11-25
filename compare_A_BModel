@@ -1,3 +1,4 @@
+CMRI_Model_AB_comparison modification
 
 #### add before section4 of CMRI_Model_AB_comparison
 print("Training settings reviewed:",
@@ -11,7 +12,7 @@ for name, path in CHECKPOINTS.items():
     print(name, path, path.exists())
 
 
-####
+#### replace the original def save function 
 
 def save(fig, name):
     from matplotlib.text import Text
